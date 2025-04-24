@@ -62,9 +62,7 @@ const sessionOptions={
         httpOnly:true,
     },
 };
-// app.get("/",(req,res)=>{
-//     res.send("Hi, I am root");
-// })
+
 
 
 app.use(session(sessionOptions))
@@ -98,6 +96,10 @@ app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter)
 
 //middleware
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
 app.all("*",(req,res,next)=>{
     next(new ExpressError(404,"Page Not Found"));
 })
