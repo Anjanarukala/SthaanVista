@@ -1,36 +1,33 @@
-/* body{
-    background-color: pink;
-} */
- .navbar{
+/* Original styles */
+.navbar{
     height: 5rem;
     background-color: white;
- }
- .fa-compass{
+}
+.fa-compass{
     color:#fe424d;
     font-size: 2rem;
- }
- .nav-link{
+}
+.nav-link{
     color:#222222 !important;
- }
- .f-info-links a{
+}
+.f-info-links a{
     text-decoration: none;
     color:#222222;
- }
- .f-info-links a:hover{
+}
+.f-info-links a:hover{
     text-decoration: underline;
-    
- }
- .f-info-links, .f-info-socials,.f-info-brand{
+}
+.f-info-links, .f-info-socials,.f-info-brand{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
- }
- .f-info-socials i{
+}
+.f-info-socials i{
     font-size: 1.2rem;
     margin-right: 1rem;
- }
- .f-info{
+}
+.f-info{
     text-align: center;
     height: 8rem;
     background-color: #ebebeb;
@@ -38,11 +35,10 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: space-evenly;
- }
+}
 .listing-card{
     border: none !important;
     margin-bottom: 2rem;
-
 }
 .card-img-overlay{
     opacity: 0;
@@ -70,7 +66,7 @@ body{
 }
 .container{
     flex: 1;
-} 
+}
 .listing-link{
     text-decoration: none !important;
 }
@@ -92,4 +88,40 @@ body{
 .show-card{
     padding-left: 0;
     padding-right: 0;
+}
+
+/* Adjustments to ensure proper mobile behavior */
+
+/* Navbar fixes */
+.navbar {
+    z-index: 1000; /* Ensure navbar stays above content */
+    position: relative; /* Enable stacking context */
+}
+
+/* Ensure that the listing is below the navbar */
+.listing-card {
+    z-index: 1;
+    position: relative; /* Ensure stacking context for listings */
+}
+
+/* Hamburger menu for mobile */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        position: absolute;
+        top: 5rem; /* Adjust based on navbar height */
+        left: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 1001; /* Keep it above other content */
+    }
+
+    /* Ensure hamburger icon is clickable */
+    .navbar-toggler {
+        z-index: 1002; /* Higher value to be above content */
+    }
+
+    /* Adjust the listing cards to avoid overlap with the navbar */
+    .listing-card {
+        margin-top: 10rem; /* Adjust if needed, depending on navbar height */
+    }
 }
